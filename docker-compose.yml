@@ -9,18 +9,17 @@ services:
     volumes:
       - ./html:/usr/share/nginx/html
 
-  vsftpd:
+  ftp:
     build:
-      context: ./docker-vsftpd
-      dockerfile: ./Dockerfile
-      args:
-        USER_ID: 1000
-        GROUP_ID: 1000
+      context: ./docker-ftp-server
+      dockerfile: Dockerfile
     restart: always
+    environment:
+      - USERS=user1|password1|/ftp/user1|10001 user2|password2|/ftp/user2|10002
     ports:
-      - 0.0.0.0:20:20
-      - 0.0.0.0:21:21
-      - 21100-21110:21100-21110
+      - "21:21"
+      - "21000-21010:21000-21010"
     volumes:
-      - ./home:/home/vsftpd
-      - ./logs:/var/log/vsftpd
+      - ./ftp-data/user1:/ftp/user1
+      - ./ftp-data/user2:/ftp/user2
+      - ./ftp-data/public:/ftp/public
