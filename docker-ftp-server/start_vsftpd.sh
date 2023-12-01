@@ -52,6 +52,11 @@ for i in $USERS ; do
   echo -e "$PASS\n$PASS" | adduser -h $FOLDER -s /sbin/nologin $UID_OPT $GROUP_OPT $NAME
   mkdir -p $FOLDER
   chown $NAME:$GROUP $FOLDER
+  if [ $folder == "public" ]; then
+    chmod -R 644 "$FOLDER"
+  elif [ $folder != "public"]; then
+    chmod -R 600 "$FOLDER"
+  fi
   unset NAME PASS FOLDER UID GID
 done
 
