@@ -1,6 +1,7 @@
 version: '3'
 
 services:
+
   nginx:
     image: nginx:latest
     container_name: my_nginx
@@ -23,3 +24,13 @@ services:
       - ./ftp-data/user1:/ftp/user1
       - ./ftp-data/user2:/ftp/user2
       - ./ftp-data/public:/ftp/public
+
+    database:
+      image: mysql
+      ports:
+        - "3306:3306"
+      environment:
+        - MYSQL_ROOT_PASSWORD=root_password
+        - MYSQL_DATABASE=my_database
+        - MYSQL_USER=db_user
+        - MYSQL_PASSWORD=db_password
