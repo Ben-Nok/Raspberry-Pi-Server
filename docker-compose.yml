@@ -8,7 +8,23 @@ services:
     ports:
       - "80:80"
     volumes:
-      - ./html:/usr/share/nginx/html
+      - html:/usr/share/nginx/html
+    depends_on:
+      - database
+
+  database:
+    image: mysql:latest
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=root_password
+      - MYSQL_DATABASE=my_database
+      - MYSQL_USER=db_user
+      - MYSQL_PASSWORD=db_password
+    expose:
+      - "3306"
+    volumes:
+      - mysql-db:/var/lib/mysql
 
   ftp:
     build:
@@ -21,16 +37,13 @@ services:
       - "21:21"
       - "21000-21010:21000-21010"
     volumes:
-      - ./ftp-data/user1:/ftp/user1
-      - ./ftp-data/user2:/ftp/user2
-      - ./ftp-data/public:/ftp/public
+      - user1:/ftp/user1
+      - user2:/ftp/user2
+      - public:/ftp/public
 
-    database:
-      image: mysql
-      ports:
-        - "3306:3306"
-      environment:
-        - MYSQL_ROOT_PASSWORD=root_password
-        - MYSQL_DATABASE=my_database
-        - MYSQL_USER=db_user
-        - MYSQL_PASSWORD=db_password
+volumes:
+  mysql-db:
+  html:
+  user1:
+  user2:
+  public:
