@@ -9,23 +9,6 @@ services:
       - "80:80"
     volumes:
       - ./html:/usr/share/nginx/html
-    depends_on:
-      - database
-
-  database:
-    image: mysql:latest
-    container_name: raspberry-pi-server_mysql
-    ports:
-      - "3306:3306"
-    environment:
-      - MYSQL_ROOT_PASSWORD=root_password
-      - MYSQL_DATABASE=my_database
-      - MYSQL_USER=db_user
-      - MYSQL_PASSWORD=db_password
-    expose:
-      - "3306"
-    volumes:
-      - ./mysql-db:/var/lib/mysql
 
   ftp:
     build:
@@ -43,7 +26,6 @@ services:
       - ./ftp/public:/ftp/public
 
 volumes:
-  mysql-db:
   html:
   user1:
   user2:
