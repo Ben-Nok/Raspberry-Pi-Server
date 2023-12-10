@@ -53,7 +53,6 @@ for i in $USERS ; do
   mkdir -p $FOLDER
   chown $NAME:$GROUP $FOLDER
   if [ $NAME == "public" ]; then
-    echo "here"
     chmod -R 755 "$FOLDER"
   else
     chmod -R 700 "$FOLDER"
