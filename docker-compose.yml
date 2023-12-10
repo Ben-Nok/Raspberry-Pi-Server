@@ -5,6 +5,7 @@ services:
   nginx:
     image: nginx:latest
     container_name: raspberry-pi-server_nginx
+    restart: always
     ports:
       - "80:80"
     volumes:
@@ -17,6 +18,7 @@ services:
     container_name: raspberry-pi-server_ftp
     environment:
       - USERS=user1|password1|/ftp/user1|10001 user2|password2|/ftp/user2|10002 public|adminPW|/ftp/public|10003
+    restart: always
     ports:
       - "21:21"
       - "21000-21010:21000-21010"
