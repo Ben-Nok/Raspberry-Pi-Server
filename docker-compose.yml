@@ -9,7 +9,7 @@ services:
     ports:
       - "80:80"
     volumes:
-      - ./html:/usr/share/nginx/html
+      - ./src:/usr/share/nginx/html
 
   ftp:
     build:
@@ -26,5 +26,5 @@ services:
       - ./ftp:/ftp
 
 volumes:
-  html:
+  src:
   ftp:
