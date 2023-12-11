@@ -9,7 +9,37 @@ services:
     ports:
       - "80:80"
     volumes:
+      - ./docker-webserver/nginx-conf:/etc/nginx/conf.d
       - ./src:/usr/share/nginx/html
+    depends_on:
+      - php
+      - mariadb
+
+  php:
+    container_name: raspberry-pi-server_php
+    build:
+      dockerfile: Dockerfile
+      context: ./docker-webserver
+    volumes:
+      - ./src:/usr/share/nginx/html
+    depends_on:
+      - mariadb
+
+  mariadb:
+    container_name: raspberry-pi-server_db
+    image: mariadb:10.9
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: raspberry-pi-serverdb
+    volumes:
+      - './mysqldata:/var/lib/mysql'
+
+  adminer:
+    container_name: raspberry-pi-server_adminer
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
 
   ftp:
     build:
@@ -28,3 +58,4 @@ services:
 volumes:
   src:
   ftp:
+  mysqldata:
