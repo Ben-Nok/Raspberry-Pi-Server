@@ -2,17 +2,13 @@
 
 Small and flexible docker image with vsftpd server
 
-source: https://github.com/delfer/docker-alpine-ftp-server
+Source: https://github.com/delfer/docker-alpine-ftp-server
+
+Multiple changes made to the start_vsftpd.sh and the vsftpd.conf to fit the project requirements.
 
 ## Usage
-```
-docker run -d \
-    -p "21:21" \
-    -p 21000-21010:21000-21010 \
-    -e USERS="one|1234" \
-    -e ADDRESS=ftp.site.domain \
-    delfer/alpine-ftp-server
-```
+
+Use with docker-compose in the project root directory with `docker compose up`
 
 ## Configuration
 

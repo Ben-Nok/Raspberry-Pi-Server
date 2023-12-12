@@ -51,6 +51,7 @@ for i in $USERS ; do
 
   echo -e "$PASS\n$PASS" | adduser -h $FOLDER -s /sbin/nologin $UID_OPT $GROUP_OPT $NAME
   mkdir -p $FOLDER
+  # manage folder rights for different users. always make the public folder accesible for other users.
   chown $NAME:$GROUP $FOLDER
   if [ $NAME == "public" ]; then
     chmod -R 755 "$FOLDER"
