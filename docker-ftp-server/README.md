@@ -5,6 +5,8 @@ Small and flexible docker image with vsftpd server
 Source: https://github.com/delfer/docker-alpine-ftp-server
 
 Multiple changes made to the start_vsftpd.sh and the vsftpd.conf to fit the project requirements.
+- added the anon_root to the vsftpd.conf
+- update read/write/execute rights for dfferennt users in start_vsftpd.sh (line 54-60)
 
 ## Usage
 
