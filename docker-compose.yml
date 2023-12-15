@@ -48,6 +48,7 @@ services:
     container_name: raspberry-pi-server_ftp
     environment:
       - USERS=user1|password1|/ftp/user1|10001 user2|password2|/ftp/user2|10002 public|adminPW|/ftp/public|10003
+      - ADDRESS=192.168.178.41
     restart: always
     ports:
       - "21:21"
