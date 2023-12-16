@@ -12,8 +12,8 @@ $TTL 2D
 @                               IN      NS      raspi-server.kopernikus.local.
 
 
-raspi-server                    IN      A       <192.168.178.41>
-www                             IN      A       <192.168.178.41>
-ftp                             IN      A       <192.168.178.41>
+raspi-server                    IN      A       192.168.178.41
+www                             IN      A       192.168.178.41
+ftp                             IN      A       192.168.178.41
 
 

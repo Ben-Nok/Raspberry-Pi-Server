@@ -1,3 +1,4 @@
+;; Only the forwarders needs to be changed in this file, other options are predefinied
 options {
         directory "/var/cache/bind";
 

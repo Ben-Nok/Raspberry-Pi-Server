@@ -1,4 +1,4 @@
-
+;; reverse lookup zone for db.kopernikus.local
 $TTL 2D
 @       IN      SOA     raspi-server.kopernikus.local. mail.kopernikus.local. (
                         2023121301          ; Serial

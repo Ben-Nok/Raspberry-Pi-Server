@@ -2,10 +2,10 @@
 
 A simple Server running following servies:
 
-- Nginx
+- Nginx (Runs on port 80)
 - PHP-FPM (ver. 8.1)
 - MariaDB
-- Adminer
+- Adminer (Runs on port 8080)
 - A FTP Server
 
 For configuration check the docker-compose.yml.\
@@ -18,7 +18,6 @@ Use `docker compose up` to start the docker services and `docker compose down` t
 If you change one of the config files, you may have to use docker `compose up --build`
 
 # Installing and configuration of Bind9
-
 
 1. Installing bind9: \
 `sudo apt install bind9`
@@ -43,13 +42,17 @@ More Information: https://docs.portainer.io/
 
 # Adding Netdata to the Server
 
+You can change the host port from 19999 to another port of your choosing.
+
 Use following command to build the container, note that no volumes are created.\
 Using Portainer is recommended.\
-`docker run -d --name=netdata -p YOUR_HOST_PORT:19999 --cap-add SYS_PTRACE --security-opt apparmor=unconfined netdata/netdata`
+`docker run -d --name=netdata -p 19999:19999 --cap-add SYS_PTRACE --security-opt apparmor=unconfined netdata/netdata`
 
 More Information: https://learn.netdata.cloud/docs/installing/docker
 
 # Installing Samba
+
+You might have to open the port 445 for Samba
 
 1. Install Samba:\
  `sudo nano /etc/samba/smb.conf`
