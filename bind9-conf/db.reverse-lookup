@@ -1,0 +1,14 @@
+
+$TTL 2D
+@       IN      SOA     raspi-server.kopernikus.local. mail.kopernikus.local. (
+                        2023121301          ; Serial
+                                8H          ; Refresh
+                                2H          ; Retry
+                                4W          ; Expire
+                                3H )        ; NX (TTL Negativ Cache)
+
+@       IN      NS      raspi-server.kopernikus.local.
+
+41      IN      PTR     raspi-server.kopernikus.local.
+41      IN      PTR     www.kopernikus.local.
+41      IN      PTR     ftp.kopernikus.local.
